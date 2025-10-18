@@ -3,6 +3,10 @@
 @import "mcss/components/m.css";    
 @import "mcss/utilities/m.css";
 
+body{
+    padding: 0 40px; /* расстояние по бокам: 16px — поменяйте по вкусу */
+}
+
 html{
     box-sizing: border-box;
 }
@@ -14,11 +18,101 @@ html{
 }
 
 .container{
-    background-color: rgb(41, 90, 136);
+    /* Убрали фоновый цвет из глобального контейнера — фон теперь управляется локально */
     max-width: 800px;
     margin: 0 10px;
     padding: 0 10px;
 }
 .logo__img{
     max-width: 40px;
+    border-radius: 6px;
+}
+
+/* Двухслойный хедер */
+.site-header{
+    font-family: Arial, Helvetica, sans-serif;
+    color: #fff;
+}
+
+.header-top{
+    /* прозрачный фон по запросу */
+    background: transparent;
+    padding: 12px 0;
+}
+.site-header .container{
+    /* Для хедера делаем контейнер полноширинным внутри отступов, чтобы кнопка могла быть у правого края */
+    max-width: 100%;
+    padding: 0 12px;
+    margin: 0;
+    background: transparent;
+}
+.header-top-inner{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.brand{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.brand-name{
+    font-weight: 700;
+    font-size: 20px;
+    letter-spacing: 1px;
+    color: #111827; /* тёмный оттенок для текста CARKG */
+}
+.header-actions{
+    /* optional: оставляем блок для точной выравнивания */
+    margin-left: auto;
+}
+
+.login-btn{
+    background: #fff;
+    color: #1f6aa6;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(31,106,166,0.18);
+}
+.login-btn:hover{
+    transform: translateY(-1px);
+}
+
+.header-bottom{
+    background: transparent;
+    padding: 8px 0;
+}
+.header-bottom-inner{
+    display: flex;
+    align-items: center;
+}
+.main-nav ul{
+    list-style: none;
+    display: flex;
+    gap: 18px;
+}
+.main-nav a{
+    color: #000204;
+    text-decoration: none;
+    font-weight: 500;
+}
+.main-nav a:hover{
+    color: #3b3838;
+    text-decoration: none;
+}
+
+/* Адаптив: на узких экранах центрируем и делаем отступы */
+@media (max-width: 600px){
+    .header-top-inner, .header-bottom-inner{
+        flex-direction: column;
+        gap: 8px;
+        align-items: flex-start;
+    }
+    .main-nav ul{
+        flex-wrap: wrap;
+        gap: 10px;
+    }
 }
