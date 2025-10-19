@@ -7,34 +7,84 @@
     <link rel="icon" type="image/x-icon" href="source\5444921223474706503.jpg">
 </head>
 <body>
+
+    
     <header class="site-header">
         <!-- Верхний слой: логотип + название слева, кнопка входа справа -->
         <div class="header-top">
             <div class="container header-top-inner">
                 <div class="brand">
-                    <img src="source/5444921223474706503.jpg" alt="Логотип" class="logo__img">
+                    <a href="main.html" class="logo-link">
+                        <img src="source/5444921223474706503.jpg" alt="Логотип" class="logo__img">
+                    </a>
                     <span class="brand-name">CARKG</span>
                 </div>
                 <div class="header-actions">
-                    <button class="login-btn">Войти</button>
+                    <!-- Упрощённый бургер: плавная анимация; открывает мобильное меню -->
+                    <button class="burger-toggle" aria-expanded="false" aria-label="Открыть меню">
+                        <span class="bt-line"></span>
+                        <span class="bt-line"></span>
+                        <span class="bt-line"></span>
+                    </button>
+
+                    <nav class="mobile-menu" aria-hidden="true">
+                        <ul>
+                            <li><a href="about.html">О нас</a></li>
+                            <li><a href="contact.html">Контакты</a></li>
+                        </ul>
+                    </nav>
+
+                    <button href="singin.html" class="login-btn">Войти</button>
                 </div>
             </div>
         </div>
 
-        <!-- Нижний слой: навигация / декоративная полоса -->
+        <!-- Нижний слой: навигация-->
         <div class="header-bottom">
             <div class="container header-bottom-inner">
                 <nav class="main-nav">
                     <ul>
-                        <li><a href="main.html">Главная</a></li>
-                        <li><a href="about.html">О нас</a></li>
-                        <li><a href="services.html">Услуги</a></li>
-                        <li><a href="contact.html">Контакты</a></li>
+                        <li><a href="main.html">Авто на заказ</a></li>
+                        <li><a href="about.html">Категории</a></li>
                     </ul>
                 </nav>
             </div>
         </div>
     </header>
-    
+    <main>
+        <div class="content container">
+            <h2>Добро пожаловать</h2>
+            <p>Это пример основной части сайта. Здесь будет основной контент — текст, карточки, списки и т.д.</p>
+        </div>
+    </main>
+                <script>
+                // Минимальный скрипт: переключает класс на body для управления показом мобильного меню
+                (function(){
+                    const toggle = document.querySelector('.burger-toggle');
+                    const menu = document.querySelector('.mobile-menu');
+                    if(!toggle || !menu) return;
+                    toggle.addEventListener('click', function(e){
+                        const opened = toggle.getAttribute('aria-expanded') === 'true';
+                        toggle.setAttribute('aria-expanded', String(!opened));
+                        menu.setAttribute('aria-hidden', String(opened));
+                        document.body.classList.toggle('mobile-open', !opened);
+                    });
+                    // Закрывать при клике вне меню
+                    document.addEventListener('click', function(e){
+                        if(!document.body.classList.contains('mobile-open')) return;
+                        if(e.target.closest('.mobile-menu') || e.target.closest('.burger-toggle')) return;
+                        document.body.classList.remove('mobile-open');
+                        toggle.setAttribute('aria-expanded','false');
+                        menu.setAttribute('aria-hidden','true');
+                    });
+                })();
+                </script>
+
+
+
+
+
+
+
 </body>
 </html>
