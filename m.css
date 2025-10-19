@@ -147,6 +147,9 @@ body.mobile-open .mobile-menu{
     border-radius: 6px;
     font-weight: 600;
     cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
     box-shadow: 0 2px 6px rgba(31,106,166,0.08);
     transition: box-shadow 250ms ease, filter 200ms ease;
 }
